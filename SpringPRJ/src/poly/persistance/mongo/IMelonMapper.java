@@ -3,6 +3,9 @@ package poly.persistance.mongo;
 import java.util.List;
 
 import poly.dto.MelonDTO;
+import poly.dto.MelonRankDTO;
+import poly.dto.MelonSingerDTO;
+import poly.dto.MelonSongDTO;
 
 public interface IMelonMapper {
 	/**
@@ -20,4 +23,10 @@ public interface IMelonMapper {
 	public int insertRank(List<MelonDTO> pList, String colNm) throws Exception;
 	
 	public List<MelonDTO> getRank(String colNm) throws Exception;
+	
+	public List<MelonSingerDTO>	getRankForSinger(String colNm)throws Exception;
+	
+	public List<MelonSongDTO> getSongForSinger(String colNm, String singer) throws Exception;
+	
+	public List<MelonRankDTO> getCompareRank(String curColNm, String preColNm) throws Exception;
 }

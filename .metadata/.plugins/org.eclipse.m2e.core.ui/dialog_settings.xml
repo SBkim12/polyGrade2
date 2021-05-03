@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\class"/>
 			<item value="C:\class\SpringPRJ"/>
 		</list>
 		<list key="projectNameTemplate">

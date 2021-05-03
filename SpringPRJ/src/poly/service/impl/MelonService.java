@@ -14,6 +14,9 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import poly.dto.MelonDTO;
+import poly.dto.MelonRankDTO;
+import poly.dto.MelonSingerDTO;
+import poly.dto.MelonSongDTO;
 import poly.persistance.mongo.IMelonMapper;
 import poly.service.IMelonService;
 import poly.util.DateUtil;
@@ -108,6 +111,64 @@ public class MelonService implements IMelonService{
 		return rList;
 	}
 
+	@Override
+	public List<MelonSingerDTO> getRankForSinger() throws Exception {
+		
+		//오늘의 랭킹 수지하기
+		this.collectMelonRank();
+		
+		//조회할 컬렉션 이름
+		String colNm = "MelonTOP100_" + DateUtil.getDateTime("yyyyMMdd"); //생성할 컬렉션명
+		
+		//가수별 랭킹 가져오기
+		List<MelonSingerDTO> rList = melonMapper.getRankForSinger(colNm);
+		
+		if(rList==null) {
+			rList = new ArrayList<MelonSingerDTO>();
+		}
+		
+		return rList;
+	}
+
+	@Override
+	public List<MelonSongDTO> getSongForSinger() throws Exception {
+		
+		log.info(this.getClass().getName()+ ".getSongForSinger Start!");
+		
+		String colNm = "MelonTOP100_20210429";//조회할 컬렉션 명
+		String singer = "아이유";//조회할 가수
+		
+		List<MelonSongDTO> rList = melonMapper.getSongForSinger(colNm, singer);
+		
+		if(rList == null) {
+			rList = new ArrayList<MelonSongDTO>();
+		}
+		
+		log.info(this.getClass().getName() + ".getSongForSinger End!");
+		
+		return rList;
+	}
+
+	@Override
+	public List<MelonRankDTO> getCompareRank() throws Exception {
+		
+		log.info(this.getClass().getName() + ".getCompareRank Start!");
+		
+		String curColNm = "MelonTOP100_20210429";
+		String preColNm = "MelonTOP100_20210415";
+		
+		//노래별 랭킹 비교 결과 가져오기
+		List<MelonRankDTO> rList = melonMapper.getCompareRank(curColNm,  preColNm);
+		
+		if(rList == null) {
+			rList = new ArrayList<MelonRankDTO>();
+		}
+		
+		log.info(this.getClass().getName()+ ".getCmpareRank End!");
+		
+		return rList;
+	}
+	
 
 
 }
