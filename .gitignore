@@ -5,3 +5,9 @@
 /SpringPRJ/.classpath
 /SpringPRJ/WebContent/WEB-INF/classes/
 /SpringPRJ/bin/
+
+/SpringPRJforMongoDB/.settings/
+/SpringPRJforMongoDB/target/
+/SpringPRJforMongoDB/.classpath
+/SpringPRJforMongoDB/WebContent/WEB-INF/classes/
+/SpringPRJforMongoDB/bin/
