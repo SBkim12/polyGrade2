@@ -167,7 +167,7 @@ public class MelonMapper extends AbstractMongoDBComon implements IMelonMapper {
 			}
 
 			String singer = doc.getString("singer");
-			int singerCnt = doc.getInteger("singerCnt", 0);
+			int singerCnt = doc.getInteger("singerCnt", 0); //0은 default 값
 
 			log.info("singer : " + singer);
 			log.info("singerCnt : " + singerCnt);
